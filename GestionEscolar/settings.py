@@ -25,10 +25,13 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # python-decouple lee desde .env en local y desde variables de entorno en producción.
 # No hay lógica condicional en el código: el entorno se controla 100% desde afuera.
 
-SECRET_KEY = config('SECRET_KEY', default='django-insecure-#$(rf3txl^fu8m+$qcna__2itn!50c^d03809*rgrpqc*h^#0=')
-DEBUG = config('DEBUG', default=True, cast=bool)
+SECRET_KEY = config(
+    "SECRET_KEY",
+    default="django-insecure-#$(rf3txl^fu8m+$qcna__2itn!50c^d03809*rgrpqc*h^#0=",
+)
+DEBUG = config("DEBUG", default=True, cast=bool)
 
-ALLOWED_HOSTS = ['MontserratEspinozaFlores.alwaysdata.net', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = ["MontserratEspinozaFlores.alwaysdata.net", "localhost", "127.0.0.1"]
 
 # Application definition
 
@@ -42,7 +45,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "alumnos.apps.AlumnosConfig",
     "cursos.apps.CursosConfig",
-    "profesores.apps.ProfesoresConfig"
+    "profesores.apps.ProfesoresConfig",
 ]
 
 MIDDLEWARE = [
@@ -61,8 +64,7 @@ ROOT_URLCONF = "GestionEscolar.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [BASE_DIR / 'templates']
-        ,
+        "DIRS": [BASE_DIR / "templates"],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -86,19 +88,15 @@ WSGI_APPLICATION = "GestionEscolar.wsgi.application"
 # No se necesita ningún if/else → python-decouple hace la detección automática.
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': config('DB_NAME', default='gestion_escolar'),
-        'USER': config('DB_USER', default='root'),
-        'PASSWORD': config('DB_PASSWORD', default='Lamontse2.0'),
-        'HOST': config('DB_HOST', default='127.0.0.1'),
-        'PORT': config('DB_PORT', default='3306'),
-        'OPTIONS': {
-            'charset': 'utf8mb4',
-        },
+    "default": {
+        "ENGINE": "django.db.backends.mysql",
+        "NAME": config("DB_NAME"),
+        "USER": config("DB_USER"),
+        "PASSWORD": config("DB_PASSWORD"),
+        "HOST": config("DB_HOST"),
+        "PORT": config("DB_PORT", default="3306"),
     }
 }
-
 # Password validation
 # https://docs.djangoproject.com/en/6.0/ref/settings/#auth-password-validators
 
@@ -129,15 +127,15 @@ USE_I18N = True
 
 USE_TZ = True
 
-DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
-LOGIN_URL = '/login/'
-LOGIN_REDIRECT_URL = '/'
-LOGOUT_REDIRECT_URL = '/login/'
+LOGIN_URL = "/login/"
+LOGIN_REDIRECT_URL = "/"
+LOGOUT_REDIRECT_URL = "/login/"
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
 
 STATIC_URL = "/static/"
-STATIC_ROOT = BASE_DIR / 'staticfiles'
-STATICFILES_DIRS = [BASE_DIR / 'static']
+STATIC_ROOT = BASE_DIR / "staticfiles"
+STATICFILES_DIRS = [BASE_DIR / "static"]
