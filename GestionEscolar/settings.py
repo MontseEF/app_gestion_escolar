@@ -25,10 +25,6 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # python-decouple lee desde .env en local y desde variables de entorno en producción.
 # No hay lógica condicional en el código: el entorno se controla 100% desde afuera.
 
-SECRET_KEY = config("SECRET_KEY")
-DEBUG = config("DEBUG", default=True, cast=bool)
-
-ALLOWED_HOSTS = [config("ALLOWED_HOSTS")]
 
 # Application definition
 
@@ -83,6 +79,11 @@ WSGI_APPLICATION = "GestionEscolar.wsgi.application"
 # En desarrollo: .env apunta al contenedor Docker (root/root/127.0.0.1)
 # En producción: AlwaysData inyecta las variables reales del servidor
 # No se necesita ningún if/else → python-decouple hace la detección automática.
+from decouple import config, Csv
+
+SECRET_KEY = config("SECRET_KEY")
+DEBUG = config("DEBUG", default=False, cast=bool)
+ALLOWED_HOSTS = config("ALLOWED_HOSTS", cast=Csv())
 
 DATABASES = {
     "default": {
