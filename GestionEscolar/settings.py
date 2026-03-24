@@ -83,7 +83,7 @@ from decouple import config, Csv
 
 SECRET_KEY = config("SECRET_KEY")
 DEBUG = False
-ALLOWED_HOSTS = config("ALLOWED_HOSTS").split(",")
+ALLOWED_HOSTS = ["montserratespinozaflores.alwaysdata.net"]
 CSRF_TRUSTED_ORIGINS = ["https://montserratespinozaflores.alwaysdata.net"]
 
 DATABASES = {
