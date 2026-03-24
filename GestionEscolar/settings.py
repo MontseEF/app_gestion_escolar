@@ -25,13 +25,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # python-decouple lee desde .env en local y desde variables de entorno en producción.
 # No hay lógica condicional en el código: el entorno se controla 100% desde afuera.
 
-SECRET_KEY = config(
-    "SECRET_KEY",
-    default="django-insecure-#$(rf3txl^fu8m+$qcna__2itn!50c^d03809*rgrpqc*h^#0=",
-)
+SECRET_KEY = config("SECRET_KEY")
 DEBUG = config("DEBUG", default=True, cast=bool)
 
-ALLOWED_HOSTS = ["MontserratEspinozaFlores.alwaysdata.net", "localhost", "127.0.0.1"]
+ALLOWED_HOSTS = [config("ALLOWED_HOSTS")]
 
 # Application definition
 
